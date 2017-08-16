@@ -127,6 +127,8 @@ namespace Pathfinding {
 		 * \see turningSpeed
 		 */
 		protected virtual void RotateTowards (Vector2 direction, float maxDegrees) {
+            if (gameObject.tag == "Player" && GameManager.Instance.player.standing)
+                return;
 			if (direction != Vector2.zero) {
 				Quaternion targetRotation = Quaternion.LookRotation(movementPlane.ToWorld(direction, 0), movementPlane.ToWorld(Vector2.zero, 1));
 				if (rotationIn2D) targetRotation *= Quaternion.Euler(90, 0, 0);

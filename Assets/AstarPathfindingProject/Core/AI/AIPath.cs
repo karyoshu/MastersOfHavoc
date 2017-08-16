@@ -196,13 +196,17 @@ public class AIPath : AIBase {
 		// We should search from the current position
 		seeker.StartPath(GetFeetPosition(), targetPosition);
 	}
-
 	public virtual void OnTargetReached () {
-		// The end of the path has been reached.
-		// If you want custom logic for when the AI has reached it's destination
-		// add it here.
-		// You can also create a new script which inherits from this one
-		// and override the function in that script
+        // The end of the path has been reached.
+        // If you want custom logic for when the AI has reached it's destination
+        // add it here.
+        // You can also create a new script which inherits from this one
+        // and override the function in that script
+        if (gameObject.tag == "Player")
+        {
+            GetComponent<PlayerControl>().standing = true;
+        }
+        
 	}
 
 	/** Called when a requested path has finished calculation.
